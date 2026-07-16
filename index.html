@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Pauzi - Portofolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0e17;
+            color: #e0e7ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a2a6c 25%, #0a1628 50%, #1a2a6c 75%, #0a0a0a 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: #fbbf24;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px 30px;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: linear-gradient(135deg, #fbbf24, #1a2a6c, #fbbf24);
+            background-size: 300% 300%;
+            animation: borderGlow 4s ease-in-out infinite;
+            padding: 4px;
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.3);
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #0a0e17;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24, #ffffff, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradientText 5s ease-in-out infinite;
+            margin-bottom: 8px;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.15);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            max-width: 500px;
+            margin: 0 auto 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-game {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0a0a0a;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-game:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(251, 191, 36, 0.5);
+        }
+
+        .btn-education {
+            background: linear-gradient(135deg, #1a2a6c, #3b82f6);
+            color: white;
+            box-shadow: 0 4px 20px rgba(26, 42, 108, 0.3);
+        }
+
+        .btn-education:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(26, 42, 108, 0.5);
+        }
+
+        .btn-friends {
+            background: linear-gradient(135deg, rgb(102, 121, 230), rgb(66, 84, 240));
+            color: white;
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+        }
+
+        .btn-friends:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5);
+        }
+
+        .btn-skills {
+            background: linear-gradient(135deg, #3b82f6, #1a2a6c);
+            color: white;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-skills:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-experience {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #0a0a0a;
+            box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-experience:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(251, 191, 36, 0.5);
+        }
+
+        .btn-softskill {
+            background: linear-gradient(135deg, rgb(66, 64, 196), #6d28d9);
+            color: white;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-softskill:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .section {
+            padding: 30px 0 10px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            color: #fbbf24;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #fbbf24, #3b82f6);
+            border-radius: 2px;
+        }
+
+        .game-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+            margin: 10px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-section::before {
+            content: '🎮';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            opacity: 0.05;
+            transform: rotate(15deg);
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .game-stats {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .game-stat {
+            text-align: center;
+        }
+
+        .game-stat .label {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .game-stat .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .game-stat .value.high-score {
+            color: #fbbf24;
+        }
+
+        #gameCanvas {
+            background: #0f172a;
+            border-radius: 12px;
+            border: 2px solid rgba(251, 191, 36, 0.2);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.1);
+            cursor: pointer;
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            aspect-ratio: 500/350;
+            touch-action: none;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .game-controls .btn {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1a2a6c);
+            color: white;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fbbf24;
+            border: 2px solid #fbbf24;
+        }
+
+        .btn-outline:hover {
+            background: rgba(251, 191, 36, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .game-instruction {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .game-instruction span {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            margin: 10px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-section::before {
+            content: '💪';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            opacity: 0.05;
+            transform: rotate(15deg);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 14px;
+            padding: 18px 14px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(26, 42, 108, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .skill-card .skill-icon {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .skill-card .skill-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #f1f5f9;
+            margin-bottom: 2px;
+        }
+
+        .skill-card .skill-level {
+            font-size: 0.7rem;
+            color: #64748b;
+        }
+
+        .skill-card .skill-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .skill-card .skill-bar .fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #fbbf24, #3b82f6);
+            transition: width 1s ease;
+            width: 0%;
+        }
+
+        .skill-card:hover .skill-bar .fill {
+            animation: fillBar 1.5s ease forwards;
+        }
+
+        @keyframes fillBar {
+            from { width: 0%; }
+            to { width: var(--level); }
+        }
+
+        .skill-card .level-badge {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 0.6rem;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            padding: 2px 12px;
+            border-radius: 20px;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        /* ===== SOFT SKILLS SECTION ===== */
+        .softskills-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px 16px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            margin: 10px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .softskills-section::before {
+            content: '🌟';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 60px;
+            opacity: 0.04;
+            transform: rotate(15deg);
+        }
+
+        .softskills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .softskill-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .softskill-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(139, 92, 246, 0.2);
+            background: rgba(139, 92, 246, 0.05);
+        }
+
+        .softskill-card .soft-icon {
+            font-size: 1.4rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .softskill-card .soft-name {
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #f1f5f9;
+        }
+
+        .softskill-card .soft-desc {
+            font-size: 0.6rem;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        /* ===== EXPERIENCE SECTION ===== */
+        .experience-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+            margin: 10px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-section::before {
+            content: '💼';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            opacity: 0.05;
+            transform: rotate(15deg);
+        }
+
+        .experience-company {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .experience-company .company-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fbbf24;
+        }
+
+        .experience-company .company-location {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 14px;
+            padding: 20px 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(245, 158, 11, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .experience-card:hover::before {
+            opacity: 1;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(251, 191, 36, 0.3);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
+        }
+
+        .experience-card .exp-icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .experience-card .exp-role {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #f1f5f9;
+        }
+
+        .experience-card .exp-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .experience-card .exp-badge {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.65rem;
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            padding: 2px 14px;
+            border-radius: 20px;
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        /* ===== EDUCATION SECTION - TIMELINE ===== */
+        .education-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px 20px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            margin: 10px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-section::before {
+            content: '📚';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 80px;
+            opacity: 0.05;
+            transform: rotate(15deg);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #fbbf24, #3b82f6, #fbbf24);
+            background-size: 200% 200%;
+            animation: gradientBG 4s ease infinite;
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 55px;
+            margin-bottom: 30px;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 14px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fbbf24, #3b82f6);
+            border: 3px solid #0a0e17;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::before {
+            transform: scale(1.3);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+        }
+
+        .timeline-item .year-badge {
+            display: inline-block;
+            background: rgba(251, 191, 36, 0.15);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 6px;
+        }
+
+        .timeline-item .school-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-item .school-name .icon {
+            font-size: 1.3rem;
+        }
+
+        .timeline-item .major {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .timeline-item .description {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        .timeline-item .achievements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .timeline-item .achievements span {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #94a3b8;
+        }
+
+        .timeline-item .achievements span.highlight {
+            border-color: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.05);
+        }
+
+        /* ===== FRIENDS SECTION ===== */
+        .friends-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px 16px;
+            border: 1px solid rgba(244, 114, 182, 0.1);
+            margin: 10px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .friends-section::before {
+            content: '👥';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 60px;
+            opacity: 0.04;
+            transform: rotate(15deg);
+        }
+
+        .friends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 360px;
+            margin: 6px auto 0;
+        }
+
+        .friend-card {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            padding: 12px 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .friend-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(244, 114, 182, 0.2);
+            background: rgba(244, 114, 182, 0.05);
+        }
+
+        .friend-card .friend-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin: 0 auto 6px;
+            border: 2px solid rgba(244, 114, 182, 0.2);
+            padding: 2px;
+        }
+
+        .friend-card .friend-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #0a0e17;
+        }
+
+        .friend-card .friend-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #f1f5f9;
+        }
+
+        .friend-card .friend-role {
+            font-size: 0.65rem;
+            color: #94a3b8;
+        }
+
+        .friend-card .friend-status {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 0.55rem;
+            background: rgba(244, 114, 182, 0.08);
+            border: 1px solid rgba(244, 114, 182, 0.1);
+            padding: 1px 10px;
+            border-radius: 20px;
+            color: #f472b6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px 15px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer .footer-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        footer .footer-copyright {
+            color: #475569;
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+
+        footer .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 12px;
+        }
+
+        footer .footer-social a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer .footer-social a:hover {
+            color: #fbbf24;
+            border-color: rgba(251, 191, 36, 0.2);
+            background: rgba(251, 191, 36, 0.05);
+            transform: translateY(-2px);
+        }
+
+        footer .footer-social a .icon {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            .game-section {
+                padding: 20px 15px;
+            }
+            .game-stats {
+                gap: 15px;
+            }
+            .game-stat .value {
+                font-size: 1.4rem;
+            }
+            #gameCanvas {
+                max-width: 100%;
+            }
+            .timeline::before {
+                left: 14px;
+            }
+            .timeline-item {
+                padding-left: 45px;
+            }
+            .timeline-item::before {
+                left: 8px;
+                width: 14px;
+                height: 14px;
+            }
+            .timeline-item .school-name {
+                font-size: 1rem;
+            }
+            .friends-grid {
+                max-width: 280px;
+            }
+            .friend-card .friend-img {
+                width: 38px;
+                height: 38px;
+            }
+            .friend-card .friend-name {
+                font-size: 0.7rem;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 12px;
+            }
+            .skill-card .skill-icon {
+                font-size: 1.8rem;
+            }
+            .softskills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            .softskill-card .soft-icon {
+                font-size: 1.2rem;
+            }
+            .softskill-card .soft-name {
+                font-size: 0.7rem;
+            }
+            .experience-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            footer .footer-social {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            footer .footer-social a {
+                font-size: 0.75rem;
+                padding: 3px 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+            .btn {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .timeline-item {
+                padding-left: 38px;
+                margin-bottom: 22px;
+            }
+            .timeline::before {
+                left: 10px;
+            }
+            .timeline-item::before {
+                left: 4px;
+                width: 12px;
+                height: 12px;
+            }
+            .friend-card .friend-img {
+                width: 34px;
+                height: 34px;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .skill-card {
+                padding: 14px 10px;
+            }
+            .softskills-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+            .softskill-card {
+                padding: 8px 6px;
+            }
+            .experience-card {
+                padding: 16px 12px;
+            }
+            footer .footer-social a {
+                font-size: 0.7rem;
+                padding: 2px 10px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #fbbf24, #3b82f6);
+            border-radius: 3px;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="profile-wrapper">
+                <div class="profile-img">
+                    <img src="saya.jpeg" alt="Foto Profil">
+                </div>
+            </div>
+
+            <div class="badge">🛠️ Builder</div>
+
+            <h1>Halo Semua , Saya Ahmad Pauzi</h1>
+
+            <p>Mahasiswa Politeknik Ganesha Medan </p>
+
+            <div class="btn-group">
+                <a href="#game" class="btn btn-game"> Main Game</a>
+                <a href="#skills" class="btn btn-skills"> Hard Skill</a>
+                <a href="#softskills" class="btn btn-softskill"> Soft Skill</a>
+                <a href="#experience" class="btn btn-experience"> Pengalaman</a>
+                <a href="#education" class="btn btn-education"> Pendidikan</a>
+                <a href="#friends" class="btn btn-friends"> Teman</a>
+            </div>
+        </section>
+
+        <!-- GAME -->
+        <section class="section" id="game">
+            <h2 class="section-title">🎮 Main Game Yuk!</h2>
+
+            <div class="game-section">
+                <div class="game-container">
+                    <div class="game-stats">
+                        <div class="game-stat">
+                            <div class="label">🎯 Skor</div>
+                            <div class="value" id="scoreDisplay">0</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="label">🏆 Tertinggi</div>
+                            <div class="value high-score" id="highScoreDisplay">0</div>
+                        </div>
+                        <div class="game-stat">
+                            <div class="label">💀 Mati</div>
+                            <div class="value" id="deathDisplay">0</div>
+                        </div>
+                    </div>
+
+                    <canvas id="gameCanvas" width="500" height="350"></canvas>
+
+                    <div class="game-controls">
+                        <button class="btn btn-primary" id="startBtn">▶ Mulai</button>
+                        <button class="btn btn-outline" id="resetBtn">🔄 Reset</button>
+                    </div>
+
+                    <div class="game-instruction">
+                        💡 <span>Spasi</span> atau <span>Klik</span> untuk melompat • Hindari kotak merah!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <h2 class="section-title"> Hard Skill</h2>
+
+            <div class="skills-section">
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 16px; font-size: 0.95rem;">
+                    Keahlian teknis yang saya kuasai
+                </p>
+
+                <div class="skills-grid">
+
+                    <!-- Microsoft Office -->
+                    <div class="skill-card">
+                        <span class="skill-icon">📊</span>
+                        <div class="skill-name">Microsoft Office</div>
+                        <div class="skill-level">Word • Excel • PowerPoint</div>
+                        <div class="skill-bar">
+                            <div class="fill" style="--level: 85%; width: 85%;"></div>
+                        </div>
+                        <span class="level-badge">Mahir</span>
+                    </div>
+
+                    <!-- HTML -->
+                    <div class="skill-card">
+                        <span class="skill-icon">🌐</span>
+                        <div class="skill-name">HTML</div>
+                        <div class="skill-level">Struktur & Semantic</div>
+                        <div class="skill-bar">
+                            <div class="fill" style="--level: 80%; width: 80%;"></div>
+                        </div>
+                        <span class="level-badge">Mahir</span>
+                    </div>
+
+                    <!-- CSS -->
+                    <div class="skill-card">
+                        <span class="skill-icon">🎨</span>
+                        <div class="skill-name">CSS</div>
+                        <div class="skill-level">Styling & Responsive</div>
+                        <div class="skill-bar">
+                            <div class="fill" style="--level: 75%; width: 75%;"></div>
+                        </div>
+                        <span class="level-badge">Mahir</span>
+                    </div>
+
+                    <!-- JavaScript -->
+                    <div class="skill-card">
+                        <span class="skill-icon">⚡</span>
+                        <div class="skill-name">JavaScript</div>
+                        <div class="skill-level">Interaktivitas & Logic</div>
+                        <div class="skill-bar">
+                            <div class="fill" style="--level: 60%; width: 60%;"></div>
+                        </div>
+                        <span class="level-badge">Menengah</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SOFT SKILLS -->
+        <section class="section" id="softskills">
+            <h2 class="section-title" style="font-size:1.4rem;"> Soft Skill</h2>
+
+            <div class="softskills-section">
+                <div class="softskills-grid">
+
+                    <div class="softskill-card">
+                        <span class="soft-icon">⏰</span>
+                        <div class="soft-name">Manajemen Waktu</div>
+                        <div class="soft-desc">Prioritas & deadline</div>
+                    </div>
+
+                    <div class="softskill-card">
+                        <span class="soft-icon">🧩</span>
+                        <div class="soft-name">Problem Solving</div>
+                        <div class="soft-desc">Analitis & solutif</div>
+                    </div>
+
+                    <div class="softskill-card">
+                        <span class="soft-icon">🔍</span>
+                        <div class="soft-name">Teliti & Detail</div>
+                        <div class="soft-desc">Fokus & akurasi</div>
+                    </div>
+
+                    <div class="softskill-card">
+                        <span class="soft-icon">🤝</span>
+                        <div class="soft-name">Kerja Tim</div>
+                        <div class="soft-desc">Kolaborasi & komunikasi</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
+            <h2 class="section-title"> Pengalaman Kerja</h2>
+
+            <div class="experience-section">
+                <div class="experience-company">
+                    <div class="company-name"> AMIK ITMI Medan</div>
+                    <div class="company-location"> Medan, Sumatera Utara</div>
+                </div>
+
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 16px; font-size: 0.9rem;">
+                    Pengalaman berkontribusi di lingkungan kampus
+                </p>
+
+                <div class="experience-grid">
+
+                    <!-- Asisten Lab -->
+                    <div class="experience-card">
+                        <span class="exp-icon">🖥️</span>
+                        <div class="exp-role">Asisten Laboratorium Komputer</div>
+                        <div class="exp-desc">Membantu praktikum dan menjaga operasional lab komputer</div>
+                        <span class="exp-badge">🔧 Teknis</span>
+                    </div>
+
+                    <!-- Akademik -->
+                    <div class="experience-card">
+                        <span class="exp-icon">📋</span>
+                        <div class="exp-role">Staf Akademik</div>
+                        <div class="exp-desc">Mengelola administrasi akademik dan mendukung kegiatan perkuliahan</div>
+                        <span class="exp-badge">📚 Administratif</span>
+                    </div>
+
+                    <!-- Perpustakaan -->
+                    <div class="experience-card">
+                        <span class="exp-icon">📖</span>
+                        <div class="exp-role">Pengelola Perpustakaan</div>
+                        <div class="exp-desc">Mengelola koleksi buku dan melayani pemustaka</div>
+                        <span class="exp-badge">📚 Layanan</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section" id="education">
+            <h2 class="section-title"> Riwayat Pendidikan</h2>
+
+            <div class="education-section">
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 20px; font-size: 0.95rem;">
+                    Perjalanan pendidikan dari masa ke masa
+                </p>
+
+                <div class="timeline">
+
+                    <!-- SD -->
+                    <div class="timeline-item">
+                        <div class="year-badge">2012 - 2018</div>
+                        <div class="school-name">
+                            <span class="icon">🏫</span>
+                            SD Negeri 134417 Kota Tanjungbalai
+                        </div>
+                        <div class="major">Sekolah Dasar</div>
+                        <div class="description">Menempuh pendidikan dasar di Kota Tanjungbalai</div>
+                        <div class="achievements">
+                            <!-- Kosong - tidak ada prestasi -->
+                        </div>
+                    </div>
+
+                    <!-- SMP -->
+                    <div class="timeline-item">
+                        <div class="year-badge">2018 - 2021</div>
+                        <div class="school-name">
+                            <span class="icon">🏫</span>
+                            SMP Negeri 2 Kota Tanjungbalai
+                        </div>
+                        <div class="major">Sekolah Menengah Pertama</div>
+                        <div class="description">Menempuh pendidikan menengah pertama di Kota Tanjungbalai</div>
+                        <div class="achievements">
+                            <span class="highlight">📚 Penghargaan Rajin Baca</span>
+                            <span>🏅 Penghargaan dari Perpustakaan Sekolah</span>
+                        </div>
+                    </div>
+
+                    <!-- Madrasah Aliyah -->
+                    <div class="timeline-item">
+                        <div class="year-badge">2021 - 2024</div>
+                        <div class="school-name">
+                            <span class="icon">🏫</span>
+                            Madrasah Aliyah (MA)
+                        </div>
+                        <div class="major">Madrasah Aliyah</div>
+                        <div class="description">Aktif mengikuti perlombaan baik di sekolah maupun di luar sekolah</div>
+                        <div class="achievements">
+                            <span class="highlight">🏆 Aktif Perlombaan di Sekolah</span>
+                            <span>🏅 Aktif Perlombaan di Luar Sekolah</span>
+                        </div>
+                    </div>
+
+                    <!-- Kuliah -->
+                    <div class="timeline-item">
+                        <div class="year-badge">2024 - Sekarang</div>
+                        <div class="school-name">
+                            <span class="icon">🎓</span>
+                            Politeknik Ganesha Medan
+                        </div>
+                        <div class="major">D3 Manajemen Informatika</div>
+                        <div class="description">Mendalami pengembangan perangkat lunak, web, dan mobile</div>
+                        <div class="achievements">
+                            <span class="highlight">🚀 Pengembang Web</span>
+                            <span>📱 Mobile App Dev</span>
+                            <span>☁️ Cloud Computing</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FRIENDS -->
+        <section class="section" id="friends">
+            <h2 class="section-title" style="font-size:1.4rem;"> Teman Seperjuangan</h2>
+
+            <div class="friends-section">
+                <p style="text-align: center; color: #94a3b8; margin-bottom: 8px; font-size: 0.8rem;">
+                    Sahabat dari dulu hingga sekarang
+                </p>
+                <div class="friends-grid">
+
+                    <!-- Teman 1 -->
+                    <div class="friend-card">
+                        <div class="friend-img">
+                            <img src="sultan.jpeg" alt="Sultan Margolang">
+                        </div>
+                        <div class="friend-name">Sultan Margolang</div>
+                        <div class="friend-role"></div>
+                        <div class="friend-status"> Sahabat</div>
+                    </div>
+
+                    <!-- Teman 2 -->
+                    <div class="friend-card">
+                        <div class="friend-img">
+                            <img src="rifqi.jpeg" alt="Rifqi Adli Tsaqif">
+                        </div>
+                        <div class="friend-name">Rifqi Adli Tsaqif</div>
+                        <div class="friend-role"></div>
+                        <div class="friend-status"> Sahabat</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-name">© 2026 Ahmad Pauzi</div>
+            <div class="footer-copyright"></div>
+
+            <div class="footer-social">
+                <a href="mailto:ptrpauzi@gmail.com" target="_blank">
+                    <span class="icon"></span> Email
+                </a>
+                <a href="https://instagram.com/ahmad_pauzi_str" target="_blank">
+                    <span class="icon"></span> Instagram
+                </a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // ===== BINTANG =====
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const count = 120;
+            for (let i = 0; i < count; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const size = Math.random() * 2.5 + 0.5;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+                star.style.animationDelay = (Math.random() * 5) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+
+        // ===== GAME =====
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const highScoreDisplay = document.getElementById('highScoreDisplay');
+        const deathDisplay = document.getElementById('deathDisplay');
+
+        let gameRunning = false;
+        let score = 0;
+        let highScore = parseInt(localStorage.getItem('gameHighScore')) || 0;
+        let deaths = parseInt(localStorage.getItem('gameDeaths')) || 0;
+
+        const player = {
+            x: 65,
+            y: 175,
+            width: 26,
+            height: 26,
+            velocity: 0,
+            gravity: 0.55,
+            jumpPower: -11,
+            rotation: 0
+        };
+
+        let obstacles = [];
+        const obstacleWidth = 22;
+        const obstacleGap = 130;
+        let frameCount = 0;
+        let spawnRate = 80;
+
+        highScoreDisplay.textContent = highScore;
+        deathDisplay.textContent = deaths;
+
+        function resetGame() {
+            player.y = 175;
+            player.velocity = 0;
+            player.rotation = 0;
+            obstacles = [];
+            score = 0;
+            frameCount = 0;
+            scoreDisplay.textContent = '0';
+            gameRunning = false;
+            document.getElementById('startBtn').textContent = '▶ Mulai';
+        }
+
+        function startGame() {
+            resetGame();
+            gameRunning = true;
+            document.getElementById('startBtn').textContent = '⏸ Bermain';
+        }
+
+        function jump() {
+            if (!gameRunning) return;
+            player.velocity = player.jumpPower;
+            player.rotation = -0.3;
+        }
+
+        function gameOver() {
+            gameRunning = false;
+            deaths++;
+            localStorage.setItem('gameDeaths', deaths);
+            deathDisplay.textContent = deaths;
+
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('gameHighScore', highScore);
+                highScoreDisplay.textContent = highScore;
+                highScoreDisplay.style.animation = 'popIn 0.5s ease-out';
+                setTimeout(() => {
+                    highScoreDisplay.style.animation = '';
+                }, 500);
+            }
+
+            document.getElementById('startBtn').textContent = '🔄 Coba Lagi';
+        }
+
+        function update() {
+            if (!gameRunning) return;
+
+            player.velocity += player.gravity;
+            player.y += player.velocity;
+            player.rotation = Math.min(Math.max(player.velocity * 0.03, -0.5), 0.5);
+
+            if (player.y < 0) {
+                player.y = 0;
+                player.velocity = 0;
+            }
+            if (player.y + player.height > canvas.height) {
+                player.y = canvas.height - player.height;
+                gameOver();
+                return;
+            }
+
+            frameCount++;
+            if (frameCount % spawnRate === 0) {
+                const minY = 50;
+                const maxY = canvas.height - obstacleGap - 50;
+                const topHeight = Math.random() * (maxY - minY) + minY;
+                obstacles.push({
+                    x: canvas.width,
+                    topHeight: topHeight,
+                    bottomY: topHeight + obstacleGap,
+                    width: obstacleWidth,
+                    scored: false
+                });
+            }
+
+            for (let i = obstacles.length - 1; i >= 0; i--) {
+                const obs = obstacles[i];
+                obs.x -= 3.5;
+
+                if (!obs.scored && obs.x + obs.width < player.x) {
+                    obs.scored = true;
+                    score++;
+                    scoreDisplay.textContent = score;
+                }
+
+                if (obs.x + obs.width < 0) {
+                    obstacles.splice(i, 1);
+                    continue;
+                }
+
+                const playerLeft = player.x;
+                const playerRight = player.x + player.width;
+                const playerTop = player.y;
+                const playerBottom = player.y + player.height;
+                const obsLeft = obs.x;
+                const obsRight = obs.x + obs.width;
+
+                if (playerRight > obsLeft && playerLeft < obsRight) {
+                    if (playerTop < obs.topHeight || playerBottom > obs.bottomY) {
+                        gameOver();
+                        return;
+                    }
+                }
+            }
+
+            spawnRate = Math.max(35, 80 - Math.floor(score / 5));
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#0f172a');
+            gradient.addColorStop(0.5, '#1a2a6c');
+            gradient.addColorStop(1, '#0a1628');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = 'rgba(251, 191, 36, 0.05)';
+            ctx.fillRect(0, canvas.height - 4, canvas.width, 4);
+
+            ctx.strokeStyle = 'rgba(251, 191, 36, 0.03)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < canvas.width; x += 35) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for (let y = 0; y < canvas.height; y += 35) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+
+            for (const obs of obstacles) {
+                const gradTop = ctx.createLinearGradient(obs.x, 0, obs.x + obs.width, 0);
+                gradTop.addColorStop(0, '#ef4444');
+                gradTop.addColorStop(1, '#dc2626');
+                ctx.fillStyle = gradTop;
+                ctx.fillRect(obs.x, 0, obs.width, obs.topHeight);
+
+                const gradBottom = ctx.createLinearGradient(obs.x, 0, obs.x + obs.width, 0);
+                gradBottom.addColorStop(0, '#ef4444');
+                gradBottom.addColorStop(1, '#dc2626');
+                ctx.fillStyle = gradBottom;
+                ctx.fillRect(obs.x, obs.bottomY, obs.width, canvas.height - obs.bottomY);
+
+                ctx.fillStyle = 'rgba(255,255,255,0.06)';
+                ctx.fillRect(obs.x + 3, 0, 3, obs.topHeight);
+                ctx.fillRect(obs.x + 3, obs.bottomY, 3, canvas.height - obs.bottomY);
+            }
+
+            ctx.save();
+            ctx.translate(player.x + player.width / 2, player.y + player.height / 2);
+            ctx.rotate(player.rotation);
+
+            ctx.shadowColor = 'rgba(251, 191, 36, 0.3)';
+            ctx.shadowBlur = 18;
+
+            const gradPlayer = ctx.createLinearGradient(-player.width / 2, -player.height / 2, player.width / 2, player.height / 2);
+            gradPlayer.addColorStop(0, '#fbbf24');
+            gradPlayer.addColorStop(0.5, '#3b82f6');
+            gradPlayer.addColorStop(1, '#fbbf24');
+            ctx.fillStyle = gradPlayer;
+            ctx.shadowColor = 'rgba(251, 191, 36, 0.5)';
+            ctx.shadowBlur = 20;
+
+            const r = 5;
+            const w = player.width;
+            const h = player.height;
+            ctx.beginPath();
+            ctx.moveTo(-w / 2 + r, -h / 2);
+            ctx.lineTo(w / 2 - r, -h / 2);
+            ctx.quadraticCurveTo(w / 2, -h / 2, w / 2, -h / 2 + r);
+            ctx.lineTo(w / 2, h / 2 - r);
+            ctx.quadraticCurveTo(w / 2, h / 2, w / 2 - r, h / 2);
+            ctx.lineTo(-w / 2 + r, h / 2);
+            ctx.quadraticCurveTo(-w / 2, h / 2, -w / 2, h / 2 - r);
+            ctx.lineTo(-w / 2, -h / 2 + r);
+            ctx.quadraticCurveTo(-w / 2, -h / 2, -w / 2 + r, -h / 2);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.shadowBlur = 0;
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(3, -3, 4, 0, Math.PI * 2); 
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(9, -3, 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#0a0e17';
+            ctx.beginPath();
+            ctx.arc(5, -2, 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(11, -2, 2, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
+
+            if (!gameRunning && score > 0) {
+                ctx.fillStyle = 'rgba(0,0,0,0.6)';
+                ctx.fillRect(0, canvas.height / 2 - 35, canvas.width, 70);
+                ctx.fillStyle = '#ef4444';
+                ctx.font = 'bold 30px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('💀 GAME OVER', canvas.width / 2, canvas.height / 2 + 10);
+            }
+
+            if (!gameRunning && score === 0) {
+                ctx.fillStyle = 'rgba(0,0,0,0.4)';
+                ctx.fillRect(0, canvas.height / 2 - 35, canvas.width, 70);
+                ctx.fillStyle = '#fbbf24';
+                ctx.font = 'bold 24px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('🎮 Tekan "Mulai"', canvas.width / 2, canvas.height / 2 + 8);
+            }
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        document.getElementById('startBtn').addEventListener('click', () => {
+            if (gameRunning) {
+                gameRunning = false;
+                document.getElementById('startBtn').textContent = '▶ Lanjut';
+            } else {
+                if (score > 0) {
+                    resetGame();
+                    gameRunning = true;
+                    document.getElementById('startBtn').textContent = '⏸ Bermain';
+                } else {
+                    startGame();
+                }
+            }
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', resetGame);
+
+        canvas.addEventListener('click', (e) => {
+            e.preventDefault();
+            jump();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                jump();
+            }
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            jump();
+        }, { passive: false });
+
+        gameLoop();
+
+        document.querySelector('a[href="#game"]')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('game').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('a[href="#skills"]')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('skills').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('a[href="#softskills"]')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('softskills').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('a[href="#experience"]')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('experience').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('a[href="#education"]')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('education').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.querySelector('a[href="#friends"]')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('friends').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
